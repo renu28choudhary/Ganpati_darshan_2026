@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ganpati Darshan 2026</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        .darshan-box {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            margin: auto;
+            background: #222;
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #aaa;
+            font-size: 20px;
+        }
+
+        .camera-section {
+            margin-top: 35px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            background: black;
+            margin-top: 15px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 15px;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Ganpati Darshan 2026</h1>
+
+        <div class="subtitle">
+            Ganpati Bappa Morya
+        </div>
+
+        <div class="darshan-box">
+            Ganpati Darshan will appear here
+        </div>
+
+        <div class="camera-section">
+
+            <h2>Join the Darshan</h2>
+
+            <p>
+                Sit comfortably and join the Darshan.
+            </p>
+
+            <p>
+                Your camera helps the system recognize when you have arrived.
+                Microphone is not required.
+            </p>
+
+            <button onclick="startCamera()">
+                Start Darshan
+            </button>
+
+            <br>
+
+            <video id="visitorCamera" autoplay playsinline></video>
+
+            <div class="message" id="message">
+                Camera is not enabled.
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        async function startCamera() {
+
+            const video = document.getElementById("visitorCamera");
+            const message = document.getElementById("message");
+
+            try {
+
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: true,
+                    audio: false
+                });
+
+                video.srcObject = stream;
+
+                message.textContent =
+                    "Camera is ready. Enjoy Ganpati Darshan.";
+
+            } catch (error) {
+
+                message.textContent =
+                    "Camera access was not enabled.";
+
+                console.log(error);
+            }
+        }
+    </script>
+
+</body>
+</html>
